@@ -50,13 +50,14 @@ while running:
             running = False                 # ออกจากลูป = ปิดโปรแกรม
 
         # เงื่อนไข: ถ้ากำลังอยู่ในหน้าจอหลัก
-        if current_screen == "main":
+        #การใช้ if current_screen == ... เพื่อสร้างหลายหน้า (Scene)
+        if current_screen == "main":  # ถ้าอยู่ในหน้าจอหลัก
             if event.type == pygame.MOUSEBUTTONDOWN:  # ถ้าเมาส์ถูกคลิก
                 if rect_yes.collidepoint(event.pos):  # ถ้าคลิกโดนปุ่ม Yes
                     current_screen = "yes_screen"     # เปลี่ยนไปยังหน้าจอ Yes
                 if rect_no.collidepoint(event.pos):   # ถ้าคลิกโดนปุ่ม No
                     # สุ่มตำแหน่งใหม่ให้ปุ่ม No (ให้มันหนี!)
-                    new_x = random.randint(0, 800 - rect_no.width)
+                    new_x = random.randint(0, 800 - rect_no.width) #random.randintคือ
                     new_y = random.randint(0, 600 - rect_no.height)
                     rect_no.topleft = (new_x, new_y)
 
@@ -85,6 +86,8 @@ while running:
         
         # วางข้อความไว้ตรงกลางประมาณ (x=200, y=250)
         screen.blit(message, (200, 250))
+        
+        
 
     # อัปเดตการแสดงผลทุกอย่างบนหน้าจอ
     pygame.display.update()
